@@ -1,0 +1,1436 @@
+/* ============================================================
+   ACCOUNTANT DASHBOARD
+   ============================================================ */
+
+.accountant-dashboard {
+    min-height: 100vh;
+    background: #f5f7fb;
+    color: #1f2937;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+.accountant-dashboard *,
+.accountant-dashboard *::before,
+.accountant-dashboard *::after {
+    box-sizing: border-box;
+}
+
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+.accountant-header {
+    width: 100%;
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 22px 30px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.accountant-header-content {
+    max-width: 1600px;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.accountant-header h1 {
+    margin: 0;
+    color: #111827;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.accountant-header p {
+    margin: 6px 0 0;
+    color: #6b7280;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.accountant-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+
+.accountant-btn {
+    min-height: 38px;
+    border: none;
+    border-radius: 8px;
+    padding: 9px 15px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+
+    white-space: nowrap;
+}
+
+.accountant-btn:hover {
+    transform: translateY(-1px);
+}
+
+.accountant-btn:active {
+    transform: translateY(0);
+}
+
+.accountant-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+
+/* Primary */
+
+.accountant-btn-primary {
+    background: #2563eb;
+    color: #ffffff;
+}
+
+.accountant-btn-primary:hover {
+    background: #1d4ed8;
+}
+
+
+/* Success */
+
+.accountant-btn-success {
+    background: #059669;
+    color: #ffffff;
+}
+
+.accountant-btn-success:hover {
+    background: #047857;
+}
+
+
+/* Danger */
+
+.accountant-btn-danger {
+    background: #dc2626;
+    color: #ffffff;
+}
+
+.accountant-btn-danger:hover {
+    background: #b91c1c;
+}
+
+
+/* Secondary */
+
+.accountant-btn-secondary {
+    background: #f3f4f6;
+    color: #374151;
+    border: 1px solid #e5e7eb;
+}
+
+.accountant-btn-secondary:hover {
+    background: #e5e7eb;
+}
+
+
+/* Outline */
+
+.accountant-btn-outline {
+    background: #ffffff;
+    color: #2563eb;
+    border: 1px solid #bfdbfe;
+}
+
+.accountant-btn-outline:hover {
+    background: #eff6ff;
+    border-color: #2563eb;
+}
+
+
+/* ============================================================
+   SMALL SPINNER
+   ============================================================ */
+
+.accountant-small-spinner {
+    width: 14px;
+    height: 14px;
+
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-top-color: #ffffff;
+
+    border-radius: 50%;
+
+    display: inline-block;
+
+    animation: accountant-spin 0.7s linear infinite;
+}
+
+.accountant-btn-outline .accountant-small-spinner {
+    border-color: #bfdbfe;
+    border-top-color: #2563eb;
+}
+
+@keyframes accountant-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* ============================================================
+   ERROR ALERT
+   ============================================================ */
+
+.accountant-error {
+    max-width: 1600px;
+    margin: 20px auto 0;
+
+    padding: 13px 16px;
+
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-left: 4px solid #dc2626;
+
+    border-radius: 8px;
+
+    color: #991b1b;
+    font-size: 13px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.accountant-error strong {
+    color: #7f1d1d;
+}
+
+.accountant-error button {
+    width: 28px;
+    height: 28px;
+
+    border: none;
+    border-radius: 6px;
+
+    background: transparent;
+    color: #991b1b;
+
+    font-size: 20px;
+    line-height: 1;
+
+    cursor: pointer;
+}
+
+.accountant-error button:hover {
+    background: #fee2e2;
+}
+
+
+/* ============================================================
+   MAIN STATISTICS
+   ============================================================ */
+
+.accountant-stats {
+    max-width: 1600px;
+    margin: 25px auto 0;
+    padding: 0 30px;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+
+/* ============================================================
+   STAT CARD
+   ============================================================ */
+
+.accountant-stat-card {
+    min-width: 0;
+
+    background: #ffffff;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 13px;
+
+    padding: 20px;
+
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.accountant-stat-card:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.07);
+}
+
+
+/* ============================================================
+   STAT ICON
+   ============================================================ */
+
+.accountant-stat-icon {
+    width: 48px;
+    height: 48px;
+
+    flex-shrink: 0;
+
+    border-radius: 11px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 21px;
+}
+
+
+/* Blue */
+
+.accountant-stat-blue .accountant-stat-icon {
+    background: #eff6ff;
+    color: #2563eb;
+}
+
+
+/* Orange */
+
+.accountant-stat-orange .accountant-stat-icon {
+    background: #fff7ed;
+    color: #ea580c;
+}
+
+
+/* Green */
+
+.accountant-stat-green .accountant-stat-icon {
+    background: #ecfdf5;
+    color: #059669;
+}
+
+
+/* Purple */
+
+.accountant-stat-purple .accountant-stat-icon {
+    background: #f5f3ff;
+    color: #7c3aed;
+}
+
+
+/* ============================================================
+   STAT CONTENT
+   ============================================================ */
+
+.accountant-stat-content {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.accountant-stat-content span {
+    color: #6b7280;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.accountant-stat-content strong {
+    margin-top: 5px;
+
+    color: #111827;
+
+    font-size: 25px;
+    font-weight: 700;
+
+    line-height: 1.2;
+
+    word-break: break-word;
+}
+
+.accountant-stat-content small {
+    margin-top: 7px;
+
+    color: #9ca3af;
+
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+
+/* ============================================================
+   SECTIONS
+   ============================================================ */
+
+.accountant-section {
+    max-width: 1600px;
+    margin: 25px auto 0;
+    padding: 0 30px;
+}
+
+.accountant-section-header {
+    background: #ffffff;
+
+    border: 1px solid #e5e7eb;
+    border-bottom: none;
+
+    border-radius: 12px 12px 0 0;
+
+    padding: 19px 21px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.accountant-section-header h2 {
+    margin: 0;
+
+    color: #111827;
+
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.accountant-section-header p {
+    margin: 5px 0 0;
+
+    color: #6b7280;
+
+    font-size: 12px;
+}
+
+
+/* ============================================================
+   COUNT BADGES
+   ============================================================ */
+
+.accountant-count {
+    flex-shrink: 0;
+
+    padding: 6px 11px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+.accountant-count-warning {
+    background: #fff7ed;
+    color: #c2410c;
+}
+
+.accountant-count-primary {
+    background: #eff6ff;
+    color: #1d4ed8;
+}
+
+
+/* ============================================================
+   TABLE CONTAINER
+   ============================================================ */
+
+.accountant-table-container {
+    background: #ffffff;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 0 0 12px 12px;
+
+    overflow: hidden;
+}
+
+.accountant-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+
+/* ============================================================
+   TABLE
+   ============================================================ */
+
+.accountant-table {
+    width: 100%;
+
+    min-width: 1050px;
+
+    border-collapse: collapse;
+}
+
+.accountant-table th {
+    background: #f9fafb;
+
+    color: #6b7280;
+
+    padding: 13px 16px;
+
+    border-bottom: 1px solid #e5e7eb;
+
+    text-align: left;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 0.5px;
+
+    white-space: nowrap;
+}
+
+.accountant-table td {
+    padding: 14px 16px;
+
+    border-bottom: 1px solid #f0f1f3;
+
+    color: #374151;
+
+    font-size: 13px;
+
+    vertical-align: middle;
+}
+
+.accountant-table tbody tr {
+    transition: background 0.15s ease;
+}
+
+.accountant-table tbody tr:hover {
+    background: #f9fafb;
+}
+
+.accountant-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* ============================================================
+   PERSON
+   ============================================================ */
+
+.accountant-person {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    min-width: 160px;
+}
+
+.accountant-avatar {
+    width: 35px;
+    height: 35px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: #eff6ff;
+    color: #2563eb;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.accountant-person > div:last-child {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.accountant-person strong {
+    color: #111827;
+
+    font-size: 13px;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.accountant-person small {
+    margin-top: 3px;
+
+    color: #9ca3af;
+
+    font-size: 10px;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/* ============================================================
+   MONEY
+   ============================================================ */
+
+.accountant-money {
+    color: #059669 !important;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+
+/* ============================================================
+   REFERENCE
+   ============================================================ */
+
+.accountant-reference {
+    display: inline-block;
+
+    max-width: 150px;
+
+    padding: 4px 7px;
+
+    background: #f9fafb;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 5px;
+
+    color: #4b5563;
+
+    font-size: 11px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+/* ============================================================
+   STATUS BADGES
+   ============================================================ */
+
+.accountant-status {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+    min-width: 75px;
+
+    padding: 5px 9px;
+
+    border-radius: 20px;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    text-transform: capitalize;
+
+    white-space: nowrap;
+}
+
+
+/* Success */
+
+.accountant-status-success {
+    background: #ecfdf5;
+    color: #047857;
+}
+
+
+/* Warning */
+
+.accountant-status-warning {
+    background: #fff7ed;
+    color: #c2410c;
+}
+
+
+/* Danger */
+
+.accountant-status-danger {
+    background: #fef2f2;
+    color: #b91c1c;
+}
+
+
+/* Secondary */
+
+.accountant-status-secondary {
+    background: #f3f4f6;
+    color: #4b5563;
+}
+
+
+/* Primary */
+
+.accountant-status-primary {
+    background: #eff6ff;
+    color: #1d4ed8;
+}
+
+
+/* ============================================================
+   TABLE ACTIONS
+   ============================================================ */
+
+.accountant-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    flex-wrap: nowrap;
+}
+
+.accountant-action-view,
+.accountant-action-approve,
+.accountant-action-reject {
+    border: none;
+
+    border-radius: 6px;
+
+    padding: 7px 10px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.accountant-action-view:hover,
+.accountant-action-approve:hover,
+.accountant-action-reject:hover {
+    transform: translateY(-1px);
+}
+
+.accountant-action-view {
+    background: #eff6ff;
+    color: #2563eb;
+}
+
+.accountant-action-view:hover {
+    background: #dbeafe;
+}
+
+.accountant-action-approve {
+    background: #ecfdf5;
+    color: #047857;
+}
+
+.accountant-action-approve:hover {
+    background: #d1fae5;
+}
+
+.accountant-action-reject {
+    background: #fef2f2;
+    color: #b91c1c;
+}
+
+.accountant-action-reject:hover {
+    background: #fee2e2;
+}
+
+.accountant-action-approve:disabled,
+.accountant-action-reject:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    transform: none;
+}
+
+
+/* ============================================================
+   EMPTY STATE
+   ============================================================ */
+
+.accountant-empty {
+    padding: 55px 20px;
+
+    text-align: center;
+}
+
+.accountant-empty-icon {
+    width: 55px;
+    height: 55px;
+
+    margin: 0 auto 14px;
+
+    border-radius: 50%;
+
+    background: #ecfdf5;
+    color: #059669;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 23px;
+    font-weight: 700;
+}
+
+.accountant-empty h3 {
+    margin: 0 0 7px;
+
+    color: #374151;
+
+    font-size: 16px;
+}
+
+.accountant-empty p {
+    margin: 0;
+
+    color: #9ca3af;
+
+    font-size: 12px;
+}
+
+
+/* ============================================================
+   MODAL OVERLAY
+   ============================================================ */
+
+.accountant-modal-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 2000;
+
+    padding: 20px;
+
+    background: rgba(17, 24, 39, 0.6);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    backdrop-filter: blur(2px);
+}
+
+
+/* ============================================================
+   MODAL
+   ============================================================ */
+
+.accountant-modal {
+    width: 100%;
+    max-width: 650px;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    background: #ffffff;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.22);
+
+    animation: accountant-modal-show 0.2s ease;
+}
+
+@keyframes accountant-modal-show {
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+/* ============================================================
+   MODAL HEADER
+   ============================================================ */
+
+.accountant-modal-header {
+    padding: 18px 22px;
+
+    border-bottom: 1px solid #e5e7eb;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.accountant-modal-header h2 {
+    margin: 0;
+
+    color: #111827;
+
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.accountant-modal-close {
+    width: 34px;
+    height: 34px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: transparent;
+
+    color: #6b7280;
+
+    font-size: 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+}
+
+.accountant-modal-close:hover {
+    background: #f3f4f6;
+    color: #111827;
+}
+
+
+/* ============================================================
+   MODAL BODY
+   ============================================================ */
+
+.accountant-modal-body {
+    padding: 22px;
+}
+
+
+/* ============================================================
+   PAYMENT DETAIL GRID
+   ============================================================ */
+
+.accountant-detail-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 15px;
+
+    margin-bottom: 15px;
+}
+
+.accountant-detail-card {
+    background: #f9fafb;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 10px;
+
+    padding: 17px;
+}
+
+.accountant-detail-card > span {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #9ca3af;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+}
+
+.accountant-detail-card h3 {
+    margin: 0 0 10px;
+
+    color: #111827;
+
+    font-size: 16px;
+}
+
+.accountant-detail-card p {
+    margin: 7px 0 0;
+
+    color: #6b7280;
+
+    font-size: 12px;
+}
+
+.accountant-detail-card p strong {
+    color: #374151;
+}
+
+.accountant-detail-money {
+    color: #059669 !important;
+}
+
+
+/* ============================================================
+   FULL DETAIL CARD
+   ============================================================ */
+
+.accountant-detail-full {
+    margin-top: 15px;
+
+    background: #ffffff;
+}
+
+.accountant-detail-row {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 20px;
+
+    padding: 14px 0;
+
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.accountant-detail-row:first-child {
+    padding-top: 0;
+}
+
+.accountant-detail-row:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.accountant-detail-row > div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.accountant-detail-row span {
+    color: #9ca3af;
+
+    font-size: 10px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+}
+
+.accountant-detail-row strong {
+    color: #374151;
+
+    font-size: 13px;
+
+    word-break: break-word;
+}
+
+
+/* ============================================================
+   LOAN DETAIL GRID
+   ============================================================ */
+
+.accountant-loan-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 13px;
+}
+
+.accountant-loan-detail {
+    min-height: 80px;
+
+    padding: 14px;
+
+    background: #f9fafb;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 9px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.accountant-loan-detail > span {
+    margin-bottom: 6px;
+
+    color: #9ca3af;
+
+    font-size: 10px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+}
+
+.accountant-loan-detail > strong {
+    color: #374151;
+
+    font-size: 13px;
+
+    line-height: 1.4;
+}
+
+
+/* ============================================================
+   MODAL FOOTER
+   ============================================================ */
+
+.accountant-modal-footer {
+    padding: 16px 22px;
+
+    border-top: 1px solid #e5e7eb;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: 8px;
+}
+
+
+/* ============================================================
+   LOADING PAGE
+   ============================================================ */
+
+.accountant-loading {
+    min-height: 100vh;
+
+    background: #f5f7fb;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+    text-align: center;
+
+    color: #6b7280;
+}
+
+.accountant-loading .accountant-spinner {
+    width: 38px;
+    height: 38px;
+
+    border: 4px solid #e5e7eb;
+    border-top-color: #2563eb;
+
+    border-radius: 50%;
+
+    animation: accountant-spin 0.8s linear infinite;
+
+    margin-bottom: 18px;
+}
+
+.accountant-loading h3 {
+    margin: 0 0 7px;
+
+    color: #111827;
+
+    font-size: 18px;
+}
+
+.accountant-loading p {
+    margin: 0;
+
+    color: #9ca3af;
+
+    font-size: 13px;
+}
+
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+
+.accountant-table-wrapper::-webkit-scrollbar {
+    height: 7px;
+}
+
+.accountant-table-wrapper::-webkit-scrollbar-track {
+    background: #f3f4f6;
+}
+
+.accountant-table-wrapper::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 10px;
+}
+
+.accountant-table-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+}
+
+
+/* ============================================================
+   RESPONSIVE - LARGE TABLET
+   ============================================================ */
+
+@media (max-width: 1200px) {
+
+    .accountant-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+/* ============================================================
+   RESPONSIVE - TABLET
+   ============================================================ */
+
+@media (max-width: 900px) {
+
+    .accountant-header {
+        padding: 20px;
+    }
+
+    .accountant-header-content {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .accountant-header-actions {
+        width: 100%;
+    }
+
+    .accountant-header-actions .accountant-btn {
+        flex: 1;
+    }
+
+    .accountant-stats {
+        padding: 0 20px;
+    }
+
+    .accountant-section {
+        padding: 0 20px;
+    }
+
+    .accountant-error {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+}
+
+
+/* ============================================================
+   RESPONSIVE - MOBILE
+   ============================================================ */
+
+@media (max-width: 650px) {
+
+    .accountant-header {
+        padding: 17px 14px;
+    }
+
+    .accountant-header h1 {
+        font-size: 19px;
+    }
+
+    .accountant-header p {
+        font-size: 12px;
+    }
+
+    .accountant-header-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .accountant-header-actions .accountant-btn {
+        width: 100%;
+        flex: none;
+    }
+
+
+    /* Stats */
+
+    .accountant-stats {
+        grid-template-columns: 1fr;
+
+        gap: 12px;
+
+        padding: 0 14px;
+
+        margin-top: 18px;
+    }
+
+    .accountant-stat-card {
+        padding: 17px;
+    }
+
+    .accountant-stat-content strong {
+        font-size: 23px;
+    }
+
+
+    /* Sections */
+
+    .accountant-section {
+        padding: 0 14px;
+
+        margin-top: 18px;
+    }
+
+    .accountant-section-header {
+        padding: 16px;
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 10px;
+    }
+
+    .accountant-section-header h2 {
+        font-size: 15px;
+    }
+
+    .accountant-count {
+        align-self: flex-start;
+    }
+
+
+    /* Error */
+
+    .accountant-error {
+        margin: 15px 14px 0;
+
+        align-items: flex-start;
+    }
+
+
+    /* Table */
+
+    .accountant-table {
+        min-width: 1000px;
+    }
+
+
+    /* Modal */
+
+    .accountant-modal-overlay {
+        padding: 12px;
+    }
+
+    .accountant-modal {
+        max-height: 94vh;
+
+        border-radius: 11px;
+    }
+
+    .accountant-modal-header {
+        padding: 16px;
+    }
+
+    .accountant-modal-body {
+        padding: 16px;
+    }
+
+    .accountant-modal-footer {
+        padding: 14px 16px;
+
+        flex-wrap: wrap;
+    }
+
+    .accountant-modal-footer .accountant-btn {
+        flex: 1;
+        min-width: 100px;
+    }
+
+
+    /* Payment Details */
+
+    .accountant-detail-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .accountant-detail-row {
+        grid-template-columns: 1fr;
+
+        gap: 15px;
+    }
+
+
+    /* Loan Details */
+
+    .accountant-loan-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* ============================================================
+   VERY SMALL MOBILE
+   ============================================================ */
+
+@media (max-width: 400px) {
+
+    .accountant-header h1 {
+        font-size: 17px;
+    }
+
+    .accountant-stat-card {
+        padding: 15px;
+    }
+
+    .accountant-stat-icon {
+        width: 42px;
+        height: 42px;
+
+        font-size: 18px;
+    }
+
+    .accountant-stat-content strong {
+        font-size: 21px;
+    }
+
+    .accountant-section-header {
+        padding: 14px;
+    }
+
+    .accountant-modal-footer {
+        flex-direction: column;
+    }
+
+    .accountant-modal-footer .accountant-btn {
+        width: 100%;
+    }
+
+}
